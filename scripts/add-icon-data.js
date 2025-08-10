@@ -220,6 +220,41 @@ if (
 	iconsData.sort(sortIconsCompare);
 	await writeIconsData(formatIconData(iconsData));
 	process.stdout.write(chalk.green('\nData written successfully.\n'));
+} else {
+	process.stdout.write(chalk.red('\nAborted.\n'));
+	process.exit(1);
+}
+
+if (
+	await confirm({
+		message: 'Do you still want add icon path?',
+	})
+) {
+	const slug = titleToSlug(answers.title);
+	const svgPath = path.resolve(
+		import.meta.dirname,
+		'..',
+		'icons',
+		`${slug}.svg`,
+	);
+	const iconTitle = answers.title;
+
+	const svgPathData = await input({
+		message: 'Please enter the SVG path "d" attribute (include quotes):',
+		validate(input) {
+			const trimmed = input.trim();
+			if (!trimmed) return 'SVG path "d" cannot be empty.';
+			if (!(trimmed.startsWith('"') && trimmed.endsWith('"')))
+				return 'SVG path "d" must start and end with quotes.';
+			return true;
+		},
+	});
+	const svgContent = `<svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>${iconTitle}</title><path d=${svgPathData}/></svg>`;
+
+	await fs.writeFile(svgPath, svgContent, 'utf8');
+	process.stdout.write(
+		chalk.green(`SVG successfully written: icon/${slug}.svg\n`),
+	);
 	process.exit(0);
 } else {
 	process.stdout.write(chalk.red('\nAborted.\n'));
