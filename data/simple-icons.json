@@ -366,6 +366,16 @@
 		"source": "https://www.aftership.com"
 	},
 	{
+		"title": "Agent Client Protocol",
+		"hex": "000000",
+		"source": "https://agentclientprotocol.com/brand",
+		"aliases": {
+			"aka": [
+				"ACP"
+			]
+		}
+	},
+	{
 		"title": "Agora",
 		"hex": "099DFD",
 		"source": "https://github.com/AgoraIO/Docs-Source/blob/849872dd0496bada0a2dceecb3f79663e3b2d323/assets/images/others/agora-logo.svg",
