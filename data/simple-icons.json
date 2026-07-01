@@ -13056,6 +13056,11 @@
 		"source": "https://player.me/p/about-us"
 	},
 	{
+		"title": "Playnite",
+		"hex": "000000",
+		"source": "https://github.com/JosefNemec/Playnite/blob/02fc1972a1f0c4b7e5f2bc2b91d8dfe643141965/media/playnite-logo-default.svg"
+	},
+	{
 		"title": "PlayStation",
 		"hex": "0070D1",
 		"source": "https://www.playstation.com/en-us/"
